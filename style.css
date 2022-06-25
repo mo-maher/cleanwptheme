@@ -1,0 +1,390 @@
+/*
+Theme Name: cleanwptheme
+Theme URI: https://github.com/mo-maher/cleanwptheme
+Author: Mohamed Ali Maher
+Author URI: http://ruoaa.com/
+Description: This theme is based on Blankslate starter theme
+Tags: accessibility-ready, one-column, two-columns, custom-menu, featured-images, microformats, sticky-post, threaded-comments, translation-ready
+Version: 0.01
+Requires at least: 5.2
+Tested up to: 5.9
+Requires PHP: 7.0
+License: GNU General Public License v3 or Later
+License URI: https://www.gnu.org/licenses/gpl.html
+Text Domain: cleanwptheme
+
+Blankslate WordPress Theme © 2011-2022 TidyThemes
+cleanwptheme is distributed under the terms of the GNU GPL
+*/
+
+/*
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}html{scroll-behavior:smooth}body{line-height:1}a{text-decoration-skip-ink:auto}a[href^="tel"]{color:inherit;text-decoration:none}button{outline:0}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}q{display:inline;font-style:italic}q:before{content:'"';font-style:normal}q:after{content:'"';font-style:normal}textarea,input[type="text"],input[type="button"],input[type="submit"],input[type="reset"],input[type="search"],input[type="password"]{-webkit-appearance:none;appearance:none;border-radius:0}input[type="search"]{-webkit-appearance:textfield}table{border-collapse:collapse;border-spacing:0}th,td{padding:2px}big{font-size:120%}small,sup,sub{font-size:80%}sup{vertical-align:super}sub{vertical-align:sub}dd{margin-left:20px}kbd,tt{font-family:courier;font-size:12px}ins{text-decoration:underline}del,strike,s{text-decoration:line-through}dt{font-weight:bold}address,cite,var{font-style:italic}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+.sticky{}.bypostauthor{}.wp-caption{}.wp-caption-text{}.gallery-caption{}.alignright{}.alignleft{}.aligncenter{}
+.screen-reader-text{border:0;clip:rect(1px,1px,1px,1px);-webkit-clip-path:inset(50%);clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute!important;width:1px;word-wrap:normal!important;word-break:normal}
+.screen-reader-text:focus{background-color:#f7f7f7;border-radius:3px;box-shadow:0 0 2px 2px rgba(0,0,0,.6);clip:auto!important;-webkit-clip-path:none;clip-path:none;color:#007acc;display:block;font-size:14px;font-size:.875rem;font-weight:700;height:auto;right:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}
+.skip-link{left:-9999rem;top:2.5rem;z-index:999999999;text-decoration:underline}
+.skip-link:focus{display:block;left:6px;top:7px;font-size:14px;font-weight:600;text-decoration:none;line-height:normal;padding:15px 23px 14px;z-index:100000;right:auto}
+.visually-hidden:not(:focus):not(:active), .form-allowed-tags:not(:focus):not(:active){position:absolute !important;height:1px;width:1px;overflow:hidden;clip:rect(1px 1px 1px 1px);clip:rect(1px, 1px, 1px, 1px);white-space:nowrap}*/
+
+/***
+    The new CSS reset - version 1.7.2 (last updated 23.6.2022)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+ */
+*:where(:not(html, iframe, canvas, img, svg, video):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a,
+button {
+  cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol,
+ul,
+menu {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+  max-width: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input,
+textarea {
+  -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+  width: 100%;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+  -webkit-appearance: revert;
+  appearance: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+  color: unset;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+  display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+:where([contenteditable]:not([contenteditable="false"])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+  -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+  -webkit-user-drag: element;
+}
+
+html {
+  direction: rtl;
+  font-size: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  background: #fff;
+  font: 19px/1.4 "Tajawal";
+  line-height: 1.6;
+  color: #444;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 860px;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #444;
+  font-weight: bold;
+
+  line-height: 1.7;
+  margin: 1em 0 15px;
+  padding: 0;
+}
+
+h1 {
+  font-size: 30px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 18px;
+  color: gray;
+}
+
+p {
+  margin: 15px 0;
+}
+
+a {
+  color: Black;
+  text-decoration: none;
+  cursor: pointer;
+}
+a:hover,
+a:active {
+  color: #999;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+strong,
+b {
+  font-weight: bold;
+}
+
+.post img {
+  display: block;
+  width: 100%;
+  margin: 0 auto 1em auto;
+}
+
+blockquote {
+  margin: 1.8em 0.8em;
+  border-right: 2px solid $gray;
+  padding: 0.1em 1em;
+  color: gray;
+}
+
+// Nicolas Gallagher's micro clearfix hack
+// http://nicolasgallagher.com/micro-clearfix-hack/
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+
+/* vertical flex*/
+
+#branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin: 1rem;
+}
+
+#site-title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#site-description {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+#header {
+  border-bottom: 2px solid #eee;
+  padding: 2rem 0;
+}
+
+/*
+Search box
+*/
+
+#search-btn {
+  border-right: 0;
+  margin: -5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+#search-field {
+  border-left: 0;
+  margin: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#menu-btn {
+  display: none;
+}
+
+#menu-toggle {
+  display: block;
+  margin-bottom: 12px;
+}
+
+#menu-toggle li {
+  padding-left: 1rem;
+}
+
+#menu-top {
+  display: flex;
+  list-style-type: none;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 4rem;
+  border: 1px solid #ddd;
+  margin-top: 4rem;
+}
+
+.nav-previous,
+.nav-next {
+  margin-bottom: 1rem;
+}
+
+input,
+button,
+textarea {
+  border: 1px solid #ddd;
+  background: transparent;
+  color: #999;
+  max-width: 100%;
+  padding: 0 1rem;
+}
+
+/*----------
+* Article
+-----------*/
+
+.sticky {
+  background: #f3f3f3;
+}
+
+article {
+  padding: 1rem;
+  margin: 1rem auto;
+  overflow: hidden;
+}
+
+/*----------
+* Aside
+-----------*/
+
+aside#sidebar {
+  border-top: 2px solid #ddd;
+  margin: 4rem 0;
+  padding: 2rem 0;
+}
+
+.xoxo {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.xoxo .widget-container {
+  padding: 0 2rem 2rem 0;
+}
+
+.xoxo li {
+  flex: 300px;
+}
+
+div#comments label {
+  display: block;
+}
+
+/*----------
+* Footer
+-----------*/
+
+footer.entry-footer {
+  clear: both;
+}
+
+/*----------
+* Mobile
+-----------*/
+
+@media only screen and (max-width: 640px) {
+  #header-wrapper,
+  .nav-links {
+    justify-content: center;
+  }
+
+  #menu-toggle {
+    display: none;
+  }
+  #menu-btn {
+    display: block;
+    font-size: 2.5rem;
+    padding: 0 1rem;
+  }
+
+  #menu-top {
+    flex-direction: column;
+    align-items: stretch;
+    align-content: space-around;
+  }
+}
+
+.wp-block-image .alignright {
+  margin-left: 1rem;
+}
+.wp-block-image .alignleft {
+  margin-right: 1em;
+}
