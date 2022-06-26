@@ -1,2 +1,2 @@
 # cleanwptheme
-Aminimalist wordpress Clean theme
+A minimalist clean wordpress theme
